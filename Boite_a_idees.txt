@@ -1,0 +1,30 @@
+Blocs IDs:
+
+	- 1: Bloque l'entité
+	- 2: L'entité passe derrière 
+	- 3: L'entité passe en-dessous
+	- 4: L'entité passe dans une seule direction
+	- 5: L'entité passe sur une monture spéciale
+	
+Scripts possibilités:
+	
+	- Déplacer
+		l'entité
+		le joueur
+		une autre entité
+			le regard
+			le corps
+				à gauche
+				à droite
+				en haut
+				en bas
+	- Obtenir
+		un objet
+		un Pokémon
+	- Se téléporter
+		sur la même map
+		sur un autre map
+	- Texte
+	- Choix multiple
+	- Animation (ex: flash, tremblement, etc.)
+	
