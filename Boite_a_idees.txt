@@ -27,4 +27,5 @@ Scripts possibilités:
 	- Texte
 	- Choix multiple
 	- Animation (ex: flash, tremblement, etc.)
+	- Proposer échange
 	
