@@ -1,10 +1,10 @@
 Blocs IDs:
 
-	- 1: Bloque l'entité
-	- 2: L'entité passe derrière 
-	- 3: L'entité passe en-dessous
-	- 4: L'entité passe dans une seule direction
-	- 5: L'entité passe sur une monture spéciale
+	- Bloque l'entité
+	- L'entité passe derrière 
+	- L'entité passe en-dessous
+	- L'entité passe dans une seule direction
+	- L'entité passe sur une monture spéciale
 	
 Scripts possibilités:
 	
