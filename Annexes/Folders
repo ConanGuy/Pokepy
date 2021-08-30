@@ -1,0 +1,17 @@
++ = at least one
+? = maximum one
+* = any amount
+  = one 
+
+Trainers:
+    Trainer1:
+        team.tm
+        pokedollars
+        entity
+
+Entities:
+    Entities:
+        Entity1:
+            id
+            loc (map+coords)
+            script.psc
