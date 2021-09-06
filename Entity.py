@@ -14,7 +14,7 @@ class Entity(pygame.sprite.Sprite):
     ####################################################
 
     def update(self):
-        self.rect.topleft = self.loc.coords
+        self.rect.topleft = self.loc.screenCoords
 
     def get_image(self, x, y):
         image = pygame.Surface((32,32))
@@ -30,7 +30,7 @@ class Entity(pygame.sprite.Sprite):
         else:
             lstMovement = [(1,1),(0,-1),(0,1),(1,-1)]
             mvt = lstMovement[orientation]
-            self.loc.coords[mvt[0]] += mvt[1]
+            self.loc.screenCoords[mvt[0]] += mvt[1]
 
         self.image = self.get_image(0, self.loc.orientation)
         self.rect = self.image.get_rect()

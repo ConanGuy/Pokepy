@@ -9,7 +9,7 @@ class Localisation:
 
         self.map = _map
         self.gridCoords = _coords
-        self.screenCoords = map(lambda x: x*32, _coords)
+        self.screenCoords = list(map(lambda x: x*32, _coords))
         self.orientation = _orientation
 
     def __str__(self):

@@ -12,11 +12,13 @@ class Game:
     def __init__(self):
         self.win = pygame.display.set_mode((0,0), pygame.NOFRAME)
         self.map = Map("map_test_1.tmx")
-        self.player = Player()
+        self.player = Player([4,4])
 
         self.map.group.add(self.player)
 
         self.pressed_keys = []
+
+        self.actionsToRunEveryFrame = []
 
         self.run()
 
