@@ -12,6 +12,8 @@ Trainers:
 Entities:
     Entities:
         Entity1:
-            id
-            loc (map+coords)
-            script.psc
+            id:
+                script
+                properties:
+                    localisation
+                    sprites
