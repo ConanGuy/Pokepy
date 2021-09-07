@@ -40,7 +40,7 @@ class Game:
                 if e.type == pygame.KEYUP:
                     self.pressed_keys.remove(e.key)
 
-            if self.player.is_moving(): self.player.moving()
+            if self.player.is_moving: self.player.moving()
 
             self.run_key_event()
 
@@ -53,7 +53,7 @@ class Game:
             return
 
         current_key = self.pressed_keys[-1]
-        if not self.player.is_moving():
+        if not self.player.is_moving:
             if current_key == KEYBINDS["UP"]:
                 self.player.move_up()
             if current_key == KEYBINDS["DOWN"]:
