@@ -11,10 +11,16 @@ class Entity(pygame.sprite.Sprite):
         self.image = self.get_image(0, self.loc.orientation)
         self.rect = self.image.get_rect()
 
+        self.movingSteps = 0
+
     ####################################################
 
     def update(self):
         self.rect.topleft = self.loc.screenCoords
+
+    def set_image(self, x, y):
+        self.image = self.get_image(x, y)
+        self.rect = self.image.get_rect()
 
     def get_image(self, x, y):
         image = pygame.Surface((32,32))
@@ -23,40 +29,57 @@ class Entity(pygame.sprite.Sprite):
         return image
 
     ####################################################
+    
+    def is_moving(self):
+        return self.movingSteps > 0
+
+    def moving(self):
+        if self.movingSteps <= 0:
+            return
+
+        lstMovement = [(1,1),(0,-1),(0,1),(1,-1)]
+        mvt = lstMovement[self.loc.orientation]
+        self.loc.screenCoords[mvt[0]] += mvt[1]
+
+        self.movingSteps -= 1
+        self.set_image(int(self.movingSteps/8)%4, self.loc.orientation)
+
+    ####################################################
 
     def move(self, steps, orientation):
-        if self.loc.orientation != orientation:
-            self.look(orientation)
-        else:
-            lstMovement = [(1,1),(0,-1),(0,1),(1,-1)]
-            mvt = lstMovement[orientation]
-            self.loc.screenCoords[mvt[0]] += mvt[1]
+        self.look(orientation)
 
-        self.image = self.get_image(0, self.loc.orientation)
-        self.rect = self.image.get_rect()
+        lstMovement = [(1,1),(0,-1),(0,1),(1,-1)]
+        mvt = lstMovement[orientation]
 
-    def move_left(self, steps=1):
-        self.move(steps, ORIENTATION_CODES['left'])
+        newGridCoords = self.loc.gridCoords.copy()
+        newGridCoords[mvt[0]] += mvt[1]*steps
+
+        self.movingSteps = steps * 32
+
     def move_right(self, steps=1):
-        self.move(steps, ORIENTATION_CODES['right'])
-    def move_up(self, steps=1):
-        self.move(steps, ORIENTATION_CODES['up'])
+        self.move(steps, RIGHT)
+    def move_left(self, steps=1):
+        self.move(steps, LEFT)
     def move_down(self, steps=1):
-        self.move(steps, ORIENTATION_CODES['down'])
+        self.move(steps, DOWN)
+    def move_up(self, steps=1):
+        self.move(steps, UP)
 
     ####################################################
 
     def look(self, orientation):
         self.loc.orientation = orientation
+        self.set_image(0, self.loc.orientation)
 
     def look_left(self):
-        self.look(ORIENTATION_CODES['left'])
+        self.look(LEFT)
     def look_right(self):
-        self.look(ORIENTATION_CODES['right'])
+        self.look(RIGHT)
     def look_up(self):
-        self.look(ORIENTATION_CODES['up'])
+        self.look(UP)
     def look_down(self):
-        self.look(ORIENTATION_CODES['down'])
+        self.look(DOWN)
 
     ####################################################
 

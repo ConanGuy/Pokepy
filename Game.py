@@ -31,7 +31,6 @@ class Game:
             dt = clock.tick(60)
 
             keys = pygame.key.get_pressed()
-
             for e in pygame.event.get():
                 if e.type == pygame.QUIT:
                     exit(0)
@@ -40,6 +39,8 @@ class Game:
                     self.pressed_keys.append(e.key)
                 if e.type == pygame.KEYUP:
                     self.pressed_keys.remove(e.key)
+
+            if self.player.is_moving(): self.player.moving()
 
             self.run_key_event()
 
@@ -52,11 +53,12 @@ class Game:
             return
 
         current_key = self.pressed_keys[-1]
-        if current_key == KEYBINDS["UP"]:
-            self.player.move_up()
-        if current_key == KEYBINDS["DOWN"]:
-            self.player.move_down()
-        if current_key == KEYBINDS["LEFT"]:
-            self.player.move_left()
-        if current_key == KEYBINDS["RIGHT"]:
-            self.player.move_right()
+        if not self.player.is_moving():
+            if current_key == KEYBINDS["UP"]:
+                self.player.move_up()
+            if current_key == KEYBINDS["DOWN"]:
+                self.player.move_down()
+            if current_key == KEYBINDS["LEFT"]:
+                self.player.move_left()
+            if current_key == KEYBINDS["RIGHT"]:
+                self.player.move_right()
